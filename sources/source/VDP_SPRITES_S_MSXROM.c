@@ -1,12 +1,10 @@
 /* ============================================================================= 
-  SDCC MSX ROM SPRITE Small Functions Library (object type)
-  Version: 1.1
-  Author: mvac7/303bcn
+  VDP SPRITE Small MSX ROM SDCC Library (fR3eL Project)
+  Version: 1.2 (22/12/2020)
+  Author: mvac7 [mvac7303b@gmail.com]
   Architecture: MSX
   Format: C Object (SDCC .rel)
-  Programming language: C
-  WEB: 
-  mail: mvac7303b@gmail.com
+  Programming language: C and Z80 assembler
 
   Description:
     Open Source library with functions to directly access to sprites of the 
@@ -17,88 +15,18 @@
 
     It's complemented with the TMS9918A MSX ROM Library.
     
-    For SDCC 3.6.0 or higher. 
+    For SDCC 3.9 or higher. 
     
   History of versions:
+    v1.2 (22/12/2020) Removed sprite mode initialization functions.
     v1.1 (2/2/2017)                   
 ============================================================================= */ 
 
 #include "../include/VDP_SPRITES_S.h"
 
-#include "../include/msxsystemvars.h"
+#include "../include/msxSystemVars.h"
 #include "../include/msxBIOS.h"
 
-
-
-/* =============================================================================
- SetSpritesSize
- Description: Set size type for the sprites.
- Input:       [char] size: 0=8x8; 1=16x16
- Output:      -
-============================================================================= */ 
-void SetSpritesSize(char size)
-{
-size;
-__asm
-  push IX
-  ld   IX,#0
-  add  IX,SP
-  
-  ld   HL,#RG1SAV ; --- read vdp(1) from mem
-  ld   B,(HL)
-
-  ld   A,4(ix)    
-  cp   #1
-  jr   NZ,size8
-  set  1,B ; 16x16
-  jr   setSize
-  
-size8:
-  res  1,B  ; 8x8    
-
-setSize:  
-  ld   C,#0x01
-  call WRTVDP
-  
-  pop  IX
-__endasm;
-}
-  
-
-
-/* =============================================================================
- SetSpritesZoom
- Description: Set zoom type for the sprites.
- Input:       [boolean] zoom: false/0 = x1; true/1 = x2
- Output:      -
-============================================================================= */
-void SetSpritesZoom(boolean zoom)
-{
-zoom;
-__asm
-  push IX
-  ld   IX,#0
-  add  IX,SP
-  
-  ld   HL,#RG1SAV ; --- read vdp(1) from mem
-  ld   B,(HL)
-
-  ld   A,4(ix)
-  or   A
-  jr   Z,nozoom
-  set  0,B ; zoom
-  jr   setZoom
-  
-nozoom:
-  res  0,B  ;nozoom    
-
-setZoom:  
-  ld   C,#0x01
-  call WRTVDP
-  
-  pop  IX
-__endasm;
-}
 
 
 
