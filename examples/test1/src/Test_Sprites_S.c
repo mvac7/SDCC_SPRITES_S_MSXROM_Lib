@@ -1,12 +1,10 @@
 /* =============================================================================
-  test SDCC VDP_SPRITE_S Library
+  test VDP SPRITES Small MSX ROM SDCC Library (fR3eL Project)
   Version: 1.1
-  Author: mvac7/303bcn
+  Author: mvac7
   Architecture: MSX
   Format: ROM
   Programming language: C
-  WEB: 
-  mail: mvac7303b@gmail.com
   
   Requirements:
   - Small Device C Compiler (SDCC) v3.6    http://sdcc.sourceforge.net/
@@ -460,7 +458,7 @@ void testSPRITES()
   WAIT(50);
   
   VPRINT(0,posY++, "Set EarlyClock");
-  PUTSPRITE(7, spr_posX[7], spr_posY[7], 8+127, 7);;
+  PUTSPRITE(7, spr_posX[7], spr_posY[7], 8+127, 7);
   WAIT(50);
   
   VPRINT(0,posY++, "Unset EarlyClock");

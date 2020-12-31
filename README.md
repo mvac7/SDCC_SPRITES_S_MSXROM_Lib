@@ -13,9 +13,9 @@ Programming language: C and Z80 assembler
 
 Open Source library with functions to directly access to sprites of the TMS9918A.
 
-It provides basic functions for initialization and display of sprites.
+It is a small library that only provides the basic functions to operate sprites: one to erase the sprite data in VRAM and another to display Sprites.
 
-It contains the PUTSPRITE function similar to that of MSX BASIC.
+Contains the PUTSPRITE function similar to that of MSX BASIC.
 
 It is complemented with the [VDP TMS9918A MSX ROM Library](https://github.com/mvac7/SDCC_VDP_TMS9918A_MSXROM_Lib), necessary for the initialization of the screen (screen and sprites mode).
 
@@ -23,7 +23,12 @@ It uses the functions from the MSX BIOS, so it is designed to create application
   
 Use them for developing MSX applications using [Small Device C Compiler (SDCC)](http://sdcc.sourceforge.net/) cross compiler.
 
-Includes an application for test and learning purposes.
+In the source code (\examples), you can find applications for testing and learning purposes.
+
+This library is part of the [MSX fR3eL Project](https://github.com/mvac7/SDCC_MSX_fR3eL).
+
+Enjoy it!
+
 
 
 ### About the Sprite libraries
